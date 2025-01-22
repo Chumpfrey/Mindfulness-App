@@ -6,6 +6,8 @@ from kivy.animation import Animation
 
 from kivy.app import App  
 
+from kivy.config import ConfigParser
+
 from kivy.core.audio import SoundLoader
 from kivy.core.audio import Sound
 from kivy.core.window import Window 
@@ -92,19 +94,21 @@ class GUI(App):
         return layout
     
     def build_config(self, config):
-        config.setdefaults("General", {
-            "key1": "value1",
-            "key2": "value2"
+        config.setdefaults("Sound", {
+            "key1": "1",
+            "key2": "24",
+            "key3": "Dark"
         })
-        config.setdefaults("Background Audio", {
-            "key11": "value11",
-            "key22": "value22"
+        config.setdefaults("Graphics", {
+            "key4": "Hello",
+            "key5": "/"
         })
     
     def build_settings(self, settings):
-            settings.add_json_panel("General", self.config, "settings.json")
+        settings.add_json_panel("General", self.config, "settings.json")
         
-    
+    def on_config_change(self, config, section, key, value):
+        self.config.write()
 
 # Launch the app
 if __name__ == "__main__":

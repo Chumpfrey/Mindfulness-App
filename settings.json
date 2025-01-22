@@ -7,22 +7,23 @@
         "type": "bool", 
         "title": "Boolean setting", 
         "desc": "This is a test. Nothing is real.", 
-        "section": "General", 
+        "section": "Sound", 
         "key": "key1"
     },
     {
         "type": "numeric", 
         "title": "Numeric setting", 
         "desc": "This is a test. Nothing is real.", 
-        "section": "General", 
-        "key": "key1"
+        "section": "Sound", 
+        "key": "key2"
     },
     {
         "type": "options", 
         "title": "Options setting", 
         "desc": "This is a test. Nothing is real.", 
-        "section": "General", 
-        "key": "key1"
+        "section": "Sound", 
+        "key": "key3",
+        "options": ["Light", "Dark"]
     },
     {
         "type": "title",
@@ -32,21 +33,14 @@
         "type": "string", 
         "title": "String setting", 
         "desc": "This is a test. Nothing is real.", 
-        "section": "General", 
-        "key": "key1"
+        "section": "Graphics", 
+        "key": "key4"
     },
     {
         "type": "path", 
         "title": "Path setting", 
         "desc": "This is a test. Nothing is real.", 
-        "section": "General", 
-        "key": "key1"
-    },
-    {
-        "type": "color", 
-        "title": "Color setting", 
-        "desc": "This is a test. Nothing is real.", 
-        "section": "General", 
-        "key": "key1"
+        "section": "Graphics", 
+        "key": "key5"
     }
 ]
