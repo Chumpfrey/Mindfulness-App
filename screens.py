@@ -7,7 +7,8 @@ from kivy.core.window import Window
 from kivy.uix.boxlayout import BoxLayout    
 from kivy.uix.button import Button     
 from kivy.uix.label import Label
-from kivy.uix.settings import Settings
+from kivy.uix.settings import MenuSidebar
+from kivy.uix.settings import SettingsWithNoMenu
 from kivy.uix.screenmanager import Screen    
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.slider import Slider
@@ -126,19 +127,29 @@ class Session(Screen):
             self.label.text = "Session completed."
 
 # Standard settings page       
-class Settings(Screen, Settings):
+class Settings(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         
-        intrfce_cls = self.interface_cls
-
-        intrfce_cls.close_button = Button(text = "!@#")
-
-        vol_slider = Slider()
+        sidebar_layout = BoxLayout(orientation = "vertical")
+        self.sidebar = MenuSidebar()
+        self.sidebar.remove_widget(self.sidebar.close_button)
+        
+        self.settings = SettingsWithNoMenu()
+        
+        sidebar_layout.add_widget(Button(text = "General"))
+        sidebar_layout.add_widget(Button(text = "Alarm"))
+        sidebar_layout.add_widget(Button(text = "Background Audio"))
+        sidebar_layout.add_widget(Button(text = "Voiceover"))
+        
+        self.sidebar.add_widget(sidebar_layout)
+        self.settings.add_widget(self.sidebar)
+        self.add_widget(self.settings)
     
     def on_pre_enter(self, *args):
         popup = FileExplorerPopup()
         popup.get_popup().open()
+        
         
 class Sources(Screen):
     def __init__(self, **kwargs):
